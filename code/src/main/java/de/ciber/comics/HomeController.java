@@ -24,7 +24,8 @@ public class HomeController {
 	public String secured(Locale locale, Model model) {
 		logger.info("HomeController.secured(..)");
 		
-		model.addAttribute("serverTime", "SECURED AREA" );
+		model.addAttribute("title", "CiberComics SECURED");
+		model.addAttribute("message", "SECURED AREA" );
 		
 		return "home";
 	}
@@ -33,7 +34,8 @@ public class HomeController {
 	public String unsecured(Locale locale, Model model) {
 		logger.info("HomeController.unsecured(..)");
 		
-		model.addAttribute("serverTime", "UNSECURED AREA" );
+		model.addAttribute("title", "CiberComics UNSECURED");
+		model.addAttribute("message", "UNSECURED AREA" );
 		
 		return "home";
 	}
@@ -48,7 +50,8 @@ public class HomeController {
 		
 		String formattedDate = dateFormat.format(date);
 		
-		model.addAttribute("serverTime", formattedDate );
+		model.addAttribute("title", "CiberComics HOME");
+		model.addAttribute("message", formattedDate );
 		
 		return "home";
 	}

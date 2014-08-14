@@ -22,6 +22,8 @@
                              default-target-url="/" 
                              authentication-failure-url="/login.html?login_error=1" />
         <logout logout-url="/logout" logout-success-url="/unsecured" />
+        
+        <remember-me key="ciberComicsAwesomeSpringWorkout2014" token-validity-seconds="604800"/> <!-- one week -->
     </http>
 
     <authentication-manager>

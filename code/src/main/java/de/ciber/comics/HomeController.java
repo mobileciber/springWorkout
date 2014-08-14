@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Handles requests for the application home page.
@@ -19,12 +20,38 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+	@RequestMapping(value = "/secured", method = RequestMethod.GET)
+	public String secured(Locale locale, Model model) {
+		logger.info("HomeController.secured(..)");
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", "SECURED AREA" );
+		
+		return "home";
+	}
+	
+	@RequestMapping(value = "/unsecured", method = RequestMethod.GET)
+	public String unsecured(Locale locale, Model model) {
+		logger.info("HomeController.unsecured(..)");
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", "UNSECURED AREA" );
+		
+		return "home";
+	}
+
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+		logger.info("HomeController.home(..)");
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -34,6 +61,15 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
+	}
+	
+	@RequestMapping(value = "/login.html", method = RequestMethod.GET)
+	public String login(Model model, @RequestParam(required=false, value="login_error") String loginError) {
+		System.out.println("*** GET PARAM WAS [" + loginError + "] ***");
+		if ("1".equals(loginError)) {
+			model.addAttribute("loginError", true);
+		}
+		return "login";
 	}
 	
 }

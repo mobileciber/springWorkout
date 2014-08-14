@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+	
+	<!-- unsecured URLs -->
+	<http pattern="/unsecured**"  security="none" />
+	<http pattern="/unsecured/**" security="none" />
+	
+	<!-- secured URLs -->
+	<http auto-config="true">
+        <!-- Restrict URLs based on role -->
+
+<!-- requires-channel="https" -->
+        <intercept-url pattern="/secured**" access="ROLE_ADMIN"  />
+
+        <!-- Override default login and logout pages -->
+        <form-login login-page="/login.html" 
+                             login-processing-url="/loginProcess" 
+                             default-target-url="/" 
+                             authentication-failure-url="/login.html?login_error=1" />
+        <logout logout-url="/logout" logout-success-url="/unsecured" />
+    </http>
+
+    <authentication-manager>
+        <authentication-provider>
+
+        	<user-service>
+        		<user name="admin" password="admin" authorities="ROLE_ADMIN"/>
+        		<user name="user" password="user" authorities="ROLE_USER"/>
+        	</user-service>
+
+        </authentication-provider>
+    </authentication-manager>
+    
+	
+</beans:beans>

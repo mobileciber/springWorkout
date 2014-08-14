@@ -24,11 +24,6 @@ public class HomeController {
 	public String secured(Locale locale, Model model) {
 		logger.info("HomeController.secured(..)");
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
 		model.addAttribute("serverTime", "SECURED AREA" );
 		
 		return "home";
@@ -37,11 +32,6 @@ public class HomeController {
 	@RequestMapping(value = "/unsecured", method = RequestMethod.GET)
 	public String unsecured(Locale locale, Model model) {
 		logger.info("HomeController.unsecured(..)");
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", "UNSECURED AREA" );
 		
@@ -68,6 +58,10 @@ public class HomeController {
 		System.out.println("*** GET PARAM WAS [" + loginError + "] ***");
 		if ("1".equals(loginError)) {
 			model.addAttribute("loginError", true);
+			// TODO enable auto-locking users after 3 failed login attempts
+//			if (userExistsInDatabase) {
+//				failedLogins += 1;
+//			}
 		}
 		return "login";
 	}

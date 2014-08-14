@@ -19,9 +19,9 @@
 	commit;
 	
 	INSERT INTO `comics`.`user` (`idUser`, `Address_idAddress`, `RegistrationDetails_idRegistrationDetails`, `ContactDetails_idContactDetails`, `firstname`, `lastname`, `title`, `password`, `role`, `username`, `status`)
-	VALUES ('1', '1', '1', '1', 'Admin', 'Adminsson', 'Prof.', 'admin', 'ROLE_ADMIN', 'admin', 'ACTIVE');
+	VALUES ('1', '1', '1', '1', 'Admin', 'Adminsson', 'Prof.', md5('admin'), 'ROLE_ADMIN', 'admin', 'ACTIVE');
 
 	INSERT INTO `comics`.`user` (`idUser`, `Address_idAddress`, `RegistrationDetails_idRegistrationDetails`, `ContactDetails_idContactDetails`, `firstname`, `lastname`, `title`, `password`, `role`, `username`, `status`) 
-	VALUES ('2', '2', '2', '2', 'User', 'Usersson', 'Dr.', 'user', 'ROLE_USER', 'user', 'ACTIVE');
+	VALUES ('2', '2', '2', '2', 'User', 'Usersson', 'Dr.', md5('user'), 'ROLE_USER', 'user', 'ACTIVE');
 
 	commit;

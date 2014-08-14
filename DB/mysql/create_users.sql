@@ -19,17 +19,9 @@
 	commit;
 	
 	INSERT INTO `comics`.`user` (`idUser`, `Address_idAddress`, `RegistrationDetails_idRegistrationDetails`, `ContactDetails_idContactDetails`, `firstname`, `lastname`, `title`, `password`, `role`, `username`, `status`)
-<<<<<<< HEAD
 	VALUES ('1', '1', '1', '1', 'Admin', 'Adminsson', 'Prof.', 'zrTzIyXtphQr1lIV9MDzcQ==', 'ROLE_ADMIN', 'admin', 'ACTIVE');
-=======
-	VALUES ('1', '1', '1', '1', 'Admin', 'Adminsson', 'Prof.', md5('admin'), 'ROLE_ADMIN', 'admin', 'ACTIVE');
->>>>>>> branch 'master' of git@github.com:mobileciber/springWorkout.git
 
 	INSERT INTO `comics`.`user` (`idUser`, `Address_idAddress`, `RegistrationDetails_idRegistrationDetails`, `ContactDetails_idContactDetails`, `firstname`, `lastname`, `title`, `password`, `role`, `username`, `status`) 
-<<<<<<< HEAD
 	VALUES ('2', '2', '2', '2', 'User', 'Usersson', 'Dr.', 'R6cz1gmYxxnPNSaufRBtEw==', 'ROLE_USER', 'user', 'ACTIVE');
-=======
-	VALUES ('2', '2', '2', '2', 'User', 'Usersson', 'Dr.', md5('user'), 'ROLE_USER', 'user', 'ACTIVE');
->>>>>>> branch 'master' of git@github.com:mobileciber/springWorkout.git
 
 	commit;

@@ -13,8 +13,8 @@
 	<http auto-config="true">
         <!-- Restrict URLs based on role -->
 
-<!-- requires-channel="https" -->
-        <intercept-url pattern="/secured**" access="ROLE_ADMIN"  />
+		<intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY" requires-channel="https" />
+        <intercept-url pattern="/secured**" access="ROLE_ADMIN" requires-channel="https" />
 
         <!-- Override default login and logout pages -->
         <form-login login-page="/login.html" 

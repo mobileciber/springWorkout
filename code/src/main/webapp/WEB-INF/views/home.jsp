@@ -8,14 +8,10 @@
 <c:choose>
 	<c:when test="${page eq 'login'}">
 		<jsp:include page="login.jsp" />
-<%-- 			<jsp:param name="title" value="LOGIN PAGE" /> --%>
-<%-- 		</jsp:include> --%>
 	</c:when>
 	
 	<c:otherwise>
 		<jsp:include page="anonym.jsp" />
 	</c:otherwise>
 </c:choose>
-		
-	
 <%@include file="/WEB-INF/views/footer.jspf" %>	

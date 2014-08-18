@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>${title}</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+<!--     <script src="js/jquery-2.0.2.min.js"></script> -->
+</head>
+
+<body>
+
+<!-- TOP CONTAINER -->
+<div id="topcontainer">
+	<div id="topleft">header.jspf</div>
+	<div id="topmiddle">topmiddle</div>
+	<div id="topright" class="center">
+		<div id="toplogincontainer">LOGOUT<img src="images/login_icon.jpg" width="25" border="0"></div>
+	</div>
+</div>
+
+<!-- MAIN-CONTAINER -->
+<div id="maincontainer">
+
+	<div id="headcontainer">
+		
+	</div>
+	<div id="menucontainer">
+		<a class="link-menu" href="#">home</a> | 
+		<a class="link-menu" href="#">Comics</a> | 
+		<a class="link-menu" href="#">MyComics</a> | 
+		<a class="link-menu" href="#">Cart</a> | 
+		<a class="link-menu" href="#">MyAccount</a>
+	</div>
+	
+	<div id="bodycontainer">

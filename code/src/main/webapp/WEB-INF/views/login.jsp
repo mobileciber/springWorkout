@@ -1,9 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
-	<head>
-		<title>CiberComics</title>
-	</head>
-	<body onload="document.f.j_username.focus();">
+<!-- <html> -->
+<!-- 	<head> -->
+<!-- 		<title>CiberComics</title> -->
+<!-- 	</head> -->
+<!-- 	<body onload="document.f.j_username.focus();"> -->
 		<h3>Login to access CiberComics</h3>
 		<form name="f" action="/comics/loginProcess"
 			method="POST">
@@ -32,5 +32,5 @@
 				</tr>
 			</table>
 		</form>
-	</body>
-</html>
+<!-- 	</body> -->
+<!-- </html> -->

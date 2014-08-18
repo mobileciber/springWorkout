@@ -1,24 +1,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page session="false" %>
-<html>
-<head>
-	<title>${title}</title>
-</head>
-<body>
-<h1>
-	${title}
-</h1>
 
-<P> Message from Server: ${message}</P>
-
-<P>
- <i>Username is <c:out value="${pageContext.request.remoteUser}">[ unknown ]</c:out>, role is
-	<sec:authorize ifAllGranted="ROLE_ADMIN">ADMIN</sec:authorize>
-	<sec:authorize ifAllGranted="ROLE_USER">USER</sec:authorize>
-	<sec:authorize ifNotGranted="ROLE_ADMIN,ROLE_USER">ANONYMOUS</sec:authorize>
-</i>
-</p>
-
-</body>
-</html>
+<%@include file="/WEB-INF/views/header.jspf" %>
+<c:set var="page" value="${pagename}" />
+<!-- include specific pages -->
+<c:choose>
+	<c:when test="${page eq 'login'}">
+		<jsp:include page="login.jsp" />
+<%-- 			<jsp:param name="title" value="LOGIN PAGE" /> --%>
+<%-- 		</jsp:include> --%>
+	</c:when>
+	
+	<c:otherwise>
+		<jsp:include page="anonym.jsp" />
+	</c:otherwise>
+</c:choose>
+		
+	
+<%@include file="/WEB-INF/views/footer.jspf" %>	

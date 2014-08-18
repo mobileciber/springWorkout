@@ -66,7 +66,10 @@ public class HomeController {
 //				failedLogins += 1;
 //			}
 		}
-		return "login";
+		
+		model.addAttribute("title", "LOGIN PAGE");
+		model.addAttribute("pagename", "login");
+		return "home";
 	}
 	
 }

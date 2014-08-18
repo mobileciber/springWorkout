@@ -1,0 +1,16 @@
+	</div>
+	<div id="footcontainer">
+		
+	</div>
+</div>
+
+<!-- BOTTOM -->
+<div id="bottomcontainer">
+		<a class="link-menu" href="#">About</a> | 
+		<a class="link-menu" href="#">Imprint</a> | 
+		<a class="link-menu" href="#">Privacy Policy</a>
+		<br>&#169; copyright Ciber AG
+		<br>. footer
+</div>
+</body>
+</html>

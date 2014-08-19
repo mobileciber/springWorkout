@@ -13,6 +13,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 @Configuration
 @EnableWebSecurity
@@ -44,5 +45,10 @@ public class ApplicationConfiguration extends WebSecurityConfigurerAdapter {
 		auth.jdbcAuthentication()
 			.usersByUsernameQuery("select username,password,status='ACTIVE' from User where username=?")
 			.authoritiesByUsernameQuery("select username,role from User where username=?");
+	}
+	
+	@Bean
+	public LocalValidatorFactoryBean validator() {
+		return new LocalValidatorFactoryBean();
 	}
 }

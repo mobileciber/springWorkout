@@ -72,4 +72,13 @@ public class HomeController {
 		return "home";
 	}
 	
+	
+	@RequestMapping(value = "/register.html", method = RequestMethod.GET)
+	public String register(Model model) {
+		
+		
+		model.addAttribute("title", "REGISTER PAGE");
+		model.addAttribute("pagename", "register");
+		return "home";
+	}	
 }

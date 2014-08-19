@@ -9,9 +9,11 @@
 	<c:when test="${page eq 'login'}">
 		<jsp:include page="login.jsp" />
 	</c:when>
-	
+	<c:when test="${page eq 'register'}">
+		<jsp:include page="register.jsp" />
+	</c:when>	
 	<c:otherwise>
 		<jsp:include page="anonym.jsp" />
 	</c:otherwise>
 </c:choose>
-<%@include file="/WEB-INF/views/footer.jspf" %>	
+<%@include file="/WEB-INF/views/footer.jspf" %>

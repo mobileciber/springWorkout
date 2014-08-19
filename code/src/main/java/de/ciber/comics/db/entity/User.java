@@ -1,10 +1,14 @@
 package de.ciber.comics.db.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  * User entity
@@ -16,12 +20,26 @@ public class User {
 	@Column(name = "idUser")
 	private long id;
 
+	@OneToOne(cascade=CascadeType.ALL)
+	private Address address;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	private ContactDetails contactDetails;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	private RegistrationDetails registrationDetails;
+	
 	private String firstname;
 	private String lastname;
 	private String title;
 	private String password;
 	private String username;
-	private String role;
+	
+	@Enumerated(EnumType.STRING)
+	private UserRole role;
+	
+	@Enumerated(EnumType.STRING)
+	private UserStatus status;
 
 	public long getId() {
 		return id;
@@ -29,6 +47,30 @@ public class User {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public ContactDetails getContactDetails() {
+		return contactDetails;
+	}
+
+	public void setContactDetails(ContactDetails contactDetails) {
+		this.contactDetails = contactDetails;
+	}
+
+	public RegistrationDetails getRegistrationDetails() {
+		return registrationDetails;
+	}
+
+	public void setRegistrationDetails(RegistrationDetails registrationDetails) {
+		this.registrationDetails = registrationDetails;
 	}
 
 	public String getFirstname() {
@@ -71,19 +113,27 @@ public class User {
 		this.username = username;
 	}
 
-	public String getRole() {
+	public UserRole getRole() {
 		return role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(UserRole role) {
 		this.role = role;
+	}
+
+	public UserStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(UserStatus status) {
+		this.status = status;
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstname=" + firstname + ", lastname="
 				+ lastname + ", title=" + title + ", password=" + password
-				+ ", username=" + username + ", role=" + role + "]";
+				+ ", username=" + username + ", role=" + role.toString() + "]";
 	}
 
 }

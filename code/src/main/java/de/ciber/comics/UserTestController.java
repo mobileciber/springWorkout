@@ -6,15 +6,13 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import de.ciber.comics.db.UserDAO;
-
 @Controller
 public class UserTestController {
 	@Autowired
-	private UserDAO dao;
+	private RegistrationService dao;
 	
 	@RequestMapping("/users")
 	public @ResponseBody String listUsers() {
-		return StringUtils.collectionToCommaDelimitedString(dao.findAll());
+		return StringUtils.collectionToCommaDelimitedString(dao.getRegisteredUsers());
 	}
 }

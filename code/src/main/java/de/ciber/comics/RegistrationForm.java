@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class RegistrationForm {
+public class RegistrationForm implements RegistrationInfo {
 	
 	@NotEmpty
 	@Size(max=45)
@@ -63,6 +63,7 @@ public class RegistrationForm {
 	@AssertTrue
 	private boolean acceptterms;
 
+	@Override
 	public String getUsername() {
 		return username;
 	}
@@ -71,6 +72,7 @@ public class RegistrationForm {
 		this.username = username;
 	}
 
+	@Override
 	public String getPassword() {
 		return password;
 	}
@@ -87,6 +89,7 @@ public class RegistrationForm {
 		this.passwordrepeat = passwordrepeat;
 	}
 
+	@Override
 	public String getEmail() {
 		return email;
 	}
@@ -103,6 +106,7 @@ public class RegistrationForm {
 		this.emailrepeat = emailrepeat;
 	}
 
+	@Override
 	public String getTitle() {
 		return title;
 	}
@@ -111,6 +115,7 @@ public class RegistrationForm {
 		this.title = title;
 	}
 
+	@Override
 	public String getFirstname() {
 		return firstname;
 	}
@@ -119,6 +124,7 @@ public class RegistrationForm {
 		this.firstname = firstname;
 	}
 
+	@Override
 	public String getLastname() {
 		return lastname;
 	}
@@ -127,6 +133,7 @@ public class RegistrationForm {
 		this.lastname = lastname;
 	}
 
+	@Override
 	public String getStreet() {
 		return street;
 	}
@@ -135,6 +142,7 @@ public class RegistrationForm {
 		this.street = street;
 	}
 
+	@Override
 	public String getHousenumber() {
 		return housenumber;
 	}
@@ -143,6 +151,7 @@ public class RegistrationForm {
 		this.housenumber = housenumber;
 	}
 
+	@Override
 	public String getPostalcode() {
 		return postalcode;
 	}
@@ -151,6 +160,7 @@ public class RegistrationForm {
 		this.postalcode = postalcode;
 	}
 
+	@Override
 	public String getTown() {
 		return town;
 	}
@@ -159,6 +169,7 @@ public class RegistrationForm {
 		this.town = town;
 	}
 
+	@Override
 	public String getCareof() {
 		return careof;
 	}
@@ -167,6 +178,7 @@ public class RegistrationForm {
 		this.careof = careof;
 	}
 
+	@Override
 	public String getCompany() {
 		return company;
 	}

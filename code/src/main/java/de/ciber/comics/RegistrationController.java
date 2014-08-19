@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,8 +23,11 @@ public class RegistrationController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(RegistrationController.class);
 	
+	@Autowired
+	private RegistrationService registrationService;
+	
 	@ModelAttribute("formBean")
-	public RegistrationForm createFormBean() {
+	public RegistrationInfo createFormBean() {
 		return new RegistrationForm();
 	}
 	
@@ -36,7 +40,8 @@ public class RegistrationController {
 	
 	@RequestMapping(value = "/register.html", method = RequestMethod.POST)
 	public String doRegister(@Valid @ModelAttribute("formBean") RegistrationForm form, BindingResult result, Model model) {
-		// custom validation
+		
+		// custom validation (creating "extra" errors)
 		if (!form.getPassword().equals(form.getPasswordrepeat())) {
 			result.addError(new FieldError("formBean", "passwordrepeat", form.getPasswordrepeat(), false,
 					new String[]{"errors.mismatch.password"}, new String[]{}, "must match password"));
@@ -46,14 +51,18 @@ public class RegistrationController {
 					new String[]{"errors.mismatch.email"}, new String[]{}, "must match email"));
 		}
 		
+		// FIXME ensure that username does not already exist
+		
 		if (result.hasErrors()) {
 			logger.debug("VALIDATION ERROR");
 			model.addAttribute("pagename", "register");
 			return "home";
 		}
 		
-		// TODO create new user account
 		logger.debug("VALIDATION OK");
+		
+		// create new user account
+		registrationService.registerUser(form);
 		
 		return "redirect:/login.html"; // TODO redirect to a "account created"-page instead
 	}

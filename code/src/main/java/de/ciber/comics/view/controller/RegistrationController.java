@@ -1,4 +1,4 @@
-package de.ciber.comics;
+package de.ciber.comics.view.controller;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,6 +19,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import de.ciber.comics.RegistrationInfo;
+import de.ciber.comics.RegistrationService;
+import de.ciber.comics.view.model.RegistrationForm;
 
 /**
  * Handles requests for the register page.

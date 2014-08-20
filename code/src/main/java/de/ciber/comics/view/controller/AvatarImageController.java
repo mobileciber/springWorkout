@@ -1,4 +1,4 @@
-package de.ciber.comics;
+package de.ciber.comics.view.controller;
 
 import java.io.IOException;
 

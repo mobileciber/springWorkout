@@ -1,4 +1,4 @@
-package de.ciber.comics;
+package de.ciber.comics.view.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

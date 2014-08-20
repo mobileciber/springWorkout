@@ -71,6 +71,7 @@ CREATE TABLE IF NOT EXISTS `comics`.`User` (
   `role` SET('ROLE_USER', 'ROLE_ADMIN') NULL,
   `username` VARCHAR(45) NULL,
   `status` SET('REGISTRATION_NOT_COMPLETE', 'ACTIVE', 'INACTIVE', 'BLOCKED') NULL,
+  `avatarImage` MEDIUMBLOB NULL,
   PRIMARY KEY (`idUser`, `Address_idAddress`, `RegistrationDetails_idRegistrationDetails`, `ContactDetails_idContactDetails`),
   INDEX `fk_User_Address_idx` (`Address_idAddress` ASC),
   INDEX `fk_User_RegistrationDetails1_idx` (`RegistrationDetails_idRegistrationDetails` ASC),

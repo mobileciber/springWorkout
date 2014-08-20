@@ -1,7 +1,13 @@
 package de.ciber.comics;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import javax.validation.Valid;
 
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +46,6 @@ public class RegistrationController {
 	
 	@RequestMapping(value = "/register.html", method = RequestMethod.POST)
 	public String doRegister(@Valid @ModelAttribute("formBean") RegistrationForm form, BindingResult result, Model model) {
-		
 		// custom validation (creating "extra" errors)
 		if (!form.getPassword().equals(form.getPasswordrepeat())) {
 			result.addError(new FieldError("formBean", "passwordrepeat", form.getPasswordrepeat(), false,

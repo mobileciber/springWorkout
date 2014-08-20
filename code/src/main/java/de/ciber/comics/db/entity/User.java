@@ -8,6 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 
 /**
@@ -41,6 +42,9 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	private UserStatus status;
 
+	@Lob
+	private byte[] avatarImage;
+	
 	public long getId() {
 		return id;
 	}
@@ -134,6 +138,14 @@ public class User {
 		return "User [id=" + id + ", firstname=" + firstname + ", lastname="
 				+ lastname + ", title=" + title + ", password=" + password
 				+ ", username=" + username + ", role=" + role.toString() + "]";
+	}
+
+	public byte[] getAvatarImage() {
+		return avatarImage;
+	}
+
+	public void setAvatarImage(byte[] avatarImage) {
+		this.avatarImage = avatarImage;
 	}
 
 }

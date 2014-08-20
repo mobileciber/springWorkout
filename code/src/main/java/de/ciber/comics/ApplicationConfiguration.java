@@ -47,8 +47,17 @@ public class ApplicationConfiguration extends WebSecurityConfigurerAdapter {
 			.authoritiesByUsernameQuery("select username,role from User where username=?");
 	}
 	
-	@Bean
+	@Bean()
 	public LocalValidatorFactoryBean validator() {
 		return new LocalValidatorFactoryBean();
 	}
+
+// FIXME find out how to use java configuration for multi-part resolver
+//	@Bean
+//	public CommonsMultipartResolver multipartResolver() {
+//		CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+//		resolver.setMaxUploadSize(5 * 1024 * 1024);
+//
+//		return resolver;
+//	}
 }

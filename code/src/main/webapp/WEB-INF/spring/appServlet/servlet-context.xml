@@ -30,7 +30,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="de.ciber.comics" />
-	
-	
-	
+
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 </beans:beans>

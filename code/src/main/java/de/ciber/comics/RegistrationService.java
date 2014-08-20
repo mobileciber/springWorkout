@@ -42,6 +42,10 @@ public class RegistrationService {	// TODO maybe rename to UserService?
 		newUser.setRole(UserRole.ROLE_USER);
 		newUser.setUsername(registrationInfo.getUsername());
 		
+		if (registrationInfo.hasAvatarImage()) {
+			newUser.setAvatarImage(registrationInfo.getAvatarImage());
+		}
+
 		// TODO change this when introducing double opt-in
 		newUser.setStatus(UserStatus.ACTIVE);
 		

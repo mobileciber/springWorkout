@@ -1,6 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-		<form:form name="f" method="POST" modelAttribute="formBean" >
+		<form:form name="f" method="POST" modelAttribute="formBean" enctype="multipart/form-data">
 			<table align="center" width="700">
 				<colgroup>
 					<col span="1" width="150px">
@@ -10,6 +10,11 @@
 				<tr>
 					<td colspan="2"><h3>Register to access CiberComics</h3></td>
 				</tr>
+				<tr>
+					<td>Avatar image (optional):</td>
+					<td><form:input type="file" path="avatar" cssErrorClass="errorBox" /></td>
+					<td><form:errors path="avatar" cssClass="error" /></td>
+				</tr>				
 				<tr>
 					<td>User:</td>
 					<td><form:input type="text" path="username" cssErrorClass="errorBox" /></td>

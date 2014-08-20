@@ -26,4 +26,7 @@ public interface RegistrationInfo {
 
 	public String getCompany();
 
+	public boolean hasAvatarImage();
+
+	public byte[] getAvatarImage();
 }

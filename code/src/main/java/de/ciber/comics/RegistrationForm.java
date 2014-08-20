@@ -1,13 +1,18 @@
 package de.ciber.comics;
 
+import java.io.IOException;
+
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 public class RegistrationForm implements RegistrationInfo {
 	
+	private MultipartFile avatar;
+
 	@NotEmpty
 	@Size(max=45)
 	private String username;
@@ -62,6 +67,14 @@ public class RegistrationForm implements RegistrationInfo {
 	
 	@AssertTrue
 	private boolean acceptterms;
+
+	public MultipartFile getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(MultipartFile avatar) {
+		this.avatar = avatar;
+	}
 
 	@Override
 	public String getUsername() {
@@ -193,6 +206,24 @@ public class RegistrationForm implements RegistrationInfo {
 
 	public void setAcceptterms(Boolean acceptterms) {
 		this.acceptterms = acceptterms;
+	}
+
+	@Override
+	public boolean hasAvatarImage() {
+		return !avatar.isEmpty();
+	}
+
+	@Override
+	public byte[] getAvatarImage() {
+		if (hasAvatarImage()) {
+			try {
+				return avatar.getBytes();
+			} catch (IOException e) {
+				throw new IllegalStateException("Failed to retrieve avatar image", e);
+			}
+		} else {
+			throw new IllegalStateException("No avatar image available");
+		}
 	}
 	
 }

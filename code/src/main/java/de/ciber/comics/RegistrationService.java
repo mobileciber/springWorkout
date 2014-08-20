@@ -15,7 +15,7 @@ import de.ciber.comics.db.entity.UserRole;
 import de.ciber.comics.db.entity.UserStatus;
 
 @Component
-public class RegistrationService {
+public class RegistrationService {	// TODO maybe rename to UserService?
 	
 	@Autowired
 	UserRepository repository;
@@ -64,5 +64,9 @@ public class RegistrationService {
 		newUser.setRegistrationDetails(newRegistrationDetails);
 		
 		repository.save(newUser);
+	}
+
+	public boolean doesUsernameExist(String username) {
+		return repository.findByUsername(username) != null;
 	}
 }

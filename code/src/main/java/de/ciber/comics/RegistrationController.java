@@ -51,7 +51,10 @@ public class RegistrationController {
 					new String[]{"errors.mismatch.email"}, new String[]{}, "must match email"));
 		}
 		
-		// FIXME ensure that username does not already exist
+		if (registrationService.doesUsernameExist(form.getUsername())) {
+			result.addError(new FieldError("formBean", "username", form.getUsername(), false,
+					new String[]{"errors.username.already.exists"}, new String[]{}, "user names must be unique"));
+		}
 		
 		if (result.hasErrors()) {
 			logger.debug("VALIDATION ERROR");

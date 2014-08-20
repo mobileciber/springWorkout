@@ -8,4 +8,6 @@ import de.ciber.comics.db.entity.User;
 
 public interface UserRepository extends CrudRepository<User, Long> {
 	Collection<User> findAll();
+
+	User findByUsername(String username);
 }

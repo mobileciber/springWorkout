@@ -36,6 +36,6 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
         	
     	request.getSession().setAttribute(UserSession.SESSION_ATTRIBUTE_NAME, userSession);
         
-    	response.sendRedirect(request.getContextPath() + "/authSuccess"); // we want to be sent to "/comics"
+    	response.sendRedirect(request.getContextPath() + "/authSuccess"); // we want to be sent to "/comics/authSuccess"
     }
 }

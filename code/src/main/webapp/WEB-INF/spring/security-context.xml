@@ -5,16 +5,16 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 	
-	<!-- unsecured URLs -->
-	<http pattern="/unsecured**"  security="none" />
-	<http pattern="/unsecured/**" security="none" />
-	
-	<!-- secured URLs -->
 	<http auto-config="true">
         <!-- Restrict URLs based on role -->
 
+		<!-- unsecured URLs -->
+		<intercept-url pattern="/unsecured**" access="IS_AUTHENTICATED_ANONYMOUSLY" requires-channel="https" />
+		<intercept-url pattern="/unsecured/**" access="IS_AUTHENTICATED_ANONYMOUSLY" requires-channel="https" />
 		<intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY" requires-channel="https" />
-        <intercept-url pattern="/secured**" access="ROLE_ADMIN" requires-channel="https" />
+		
+		<!-- secured URLs -->
+        <intercept-url pattern="/secured**" access="ROLE_USER,ROLE_ADMIN" requires-channel="https" />
 
         <!-- Override default login and logout pages -->
         <form-login login-page="/login.html" 
@@ -47,7 +47,7 @@
 	  <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
 	  <beans:property name="url" value="jdbc:mysql://localhost:3306/comics" />
 	  <beans:property name="username" value="root" />
-	  <beans:property name="password" value="" />
+	  <beans:property name="password" value="root" />
  	</beans:bean>
 	
 </beans:beans>

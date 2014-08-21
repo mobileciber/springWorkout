@@ -1,7 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 
 <%@include file="/WEB-INF/views/header.jspf" %>
 <c:set var="page" value="${pagename}" />

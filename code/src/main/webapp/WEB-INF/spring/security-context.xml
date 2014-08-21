@@ -18,9 +18,10 @@
 
         <!-- Override default login and logout pages -->
         <form-login login-page="/login.html" 
-                             login-processing-url="/loginProcess" 
-                             default-target-url="/" 
+                             login-processing-url="/loginProcess"
+                             authentication-success-handler-ref="authSuccessHandler"
                              authentication-failure-url="/login.html?login_error=1" />
+                             
         <logout logout-url="/logout" logout-success-url="/unsecured" />
         
         <remember-me key="ciberComicsAwesomeSpringWorkout2014" token-validity-seconds="604800"/> <!-- one week -->
@@ -38,6 +39,9 @@
 			      "select username,role from User where username=?"  />
         </authentication-provider>
     </authentication-manager>
+    
+    <beans:bean id="authSuccessHandler" class="de.ciber.comics.AuthenticationSuccessHandlerImpl" >
+    </beans:bean>
     
     <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	  <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />

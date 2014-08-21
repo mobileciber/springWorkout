@@ -17,7 +17,7 @@
 	<div id="topright" class="center">
 		<div id="toplogincontainer">
 			<sec:authorize ifAnyGranted="ROLE_ADMIN,ROLE_USER">
-				 <c:out value="${pageContext.request.remoteUser}">[ unknown ]</c:out>
+				 <c:out value="${sessionScope.userSessionBean.username}">[ unknown user ]</c:out>
 				 <img src="images/login_icon.jpg" width="25" border="0" />
 				 <a href="logout">Logout</a>
 			</sec:authorize>

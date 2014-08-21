@@ -15,18 +15,7 @@
 	<div id="topleft"></div>
 	<div id="topmiddle"></div>
 	<div id="topright" class="center">
-		<div id="toplogincontainer">
-			<sec:authorize ifAnyGranted="ROLE_ADMIN,ROLE_USER">
-				 <c:out value="${sessionScope.userSessionBean.username}">[ unknown user ]</c:out>
-				 <img src="images/login_icon.jpg" width="25" border="0" />
-				 <a href="logout">Logout</a>
-			</sec:authorize>
-			
-			<sec:authorize ifNotGranted="ROLE_ADMIN,ROLE_USER">
-				<a href="login.html">Login</a>
-				<img src="images/login_icon.jpg" width="25" border="0" />
-			</sec:authorize>
-		</div>
+		
 	</div>
 </div>
 
@@ -45,6 +34,19 @@
 			<a class="link-menu" href="#">Cart</a> | 
 			<a class="link-menu" href="#">MyAccount</a>
 		</sec:authorize>
+	<div id="toplogincontainer">
+			<sec:authorize ifAnyGranted="ROLE_ADMIN,ROLE_USER">
+				 <c:out value="${sessionScope.userSessionBean.username}">[ unknown user ]</c:out>
+				 <img src='getImage/${sessionScope.userSessionBean.id}' height='15' border='0' />
+				 <a href="logout">Logout</a>
+			</sec:authorize>
+			
+			<sec:authorize ifNotGranted="ROLE_ADMIN,ROLE_USER">
+				<a href="login.html">Login</a>
+				<img src="images/login_icon.jpg" height="15" border="0" />
+			</sec:authorize>
 	</div>
+	</div>
+
 	
 	<div id="bodycontainer">

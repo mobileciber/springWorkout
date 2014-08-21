@@ -31,9 +31,11 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
     	//      
     	//      What we did not manage to get working is the injection of "userRepository" into
     	//      this class (apparently because they live in different application contexts).
+    	//      
+    	//      As a workaround, we do the loading in HomeController.authSuccess(..) at the moment.
         	
     	request.getSession().setAttribute(UserSession.SESSION_ATTRIBUTE_NAME, userSession);
         
-    	response.sendRedirect(request.getContextPath()); // we want to be sent to "/comics"
+    	response.sendRedirect(request.getContextPath() + "/authSuccess"); // we want to be sent to "/comics"
     }
 }

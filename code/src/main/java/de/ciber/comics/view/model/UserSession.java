@@ -4,12 +4,22 @@ public class UserSession {
 	
 	public static final String SESSION_ATTRIBUTE_NAME = "userSessionBean";
 
+	private boolean complete = false;
+	
 	private long id;
 	private String firstname;
 	private String lastname;
 	private String title;
 	private String username;
 	private boolean admin;
+
+	public boolean isComplete() {
+		return complete;
+	}
+
+	public void setComplete(boolean complete) {
+		this.complete = complete;
+	}
 
 	public long getId() {
 		return id;

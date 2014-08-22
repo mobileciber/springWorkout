@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `comics`.`RegistrationDetails` (
   `idRegistrationDetails` INT NOT NULL AUTO_INCREMENT,
   `ip` VARCHAR(45) NULL,
   `date` MEDIUMTEXT NULL,
+  `activationKey` VARCHAR(45) NULL,
   PRIMARY KEY (`idRegistrationDetails`))
 ENGINE = InnoDB;
 

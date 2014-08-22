@@ -1,5 +1,6 @@
 package de.ciber.comics.view.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -12,6 +13,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import de.ciber.comics.RegistrationInfo;
@@ -43,7 +45,7 @@ public class RegistrationController {
 	}
 	
 	@RequestMapping(value = "/register.html", method = RequestMethod.POST)
-	public String doRegister(@Valid @ModelAttribute("formBean") RegistrationForm form, BindingResult result, Model model) {
+	public String doRegister(@Valid @ModelAttribute("formBean") RegistrationForm form, BindingResult result, Model model, HttpServletRequest request) {
 		// custom validation (creating "extra" errors)
 		if (!form.getPassword().equals(form.getPasswordrepeat())) {
 			result.addError(new FieldError("formBean", "passwordrepeat", form.getPasswordrepeat(), false,
@@ -68,8 +70,26 @@ public class RegistrationController {
 		logger.debug("VALIDATION OK");
 		
 		// create new user account
-		registrationService.registerUser(form);
+		registrationService.registerUser(form, request.getRemoteAddr());
 		
-		return "redirect:/login.html"; // TODO redirect to a "account created"-page instead
+		return "redirect:/accountCreated.html";
 	}
+	
+	@RequestMapping(value = "/accountCreated.html", method = RequestMethod.GET)
+	public String accountCreated(Model model) {
+		model.addAttribute("pagename", "accountCreated");
+		return "home";
+	}
+	
+	@RequestMapping(value = "/activateAccount.html", method = RequestMethod.GET)
+	public String activateAccount(@RequestParam(required=false, value="key") String key,
+			@RequestParam(required=false, value="id") Long id, Model model) {
+		boolean success = registrationService.activateUser(key, id);
+		
+		model.addAttribute("activationOkay", success);
+		model.addAttribute("pagename", "activateAccount");
+		
+		return "home";
+	}
+	
 }

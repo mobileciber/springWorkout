@@ -3,6 +3,8 @@ package de.ciber.comics.view.model;
 public class UserSession {
 	
 	public static final String SESSION_ATTRIBUTE_NAME = "userSessionBean";
+	
+	public static final String SYSTEM_BASE_URL = "https://localhost:8443/comics/";
 
 	private boolean complete = false;
 	

@@ -19,6 +19,8 @@ public class RegistrationDetails {
 	private String ip;
 	
 	private long date;
+	
+	private String activationKey;
 
 	public long getId() {
 		return id;
@@ -44,9 +46,17 @@ public class RegistrationDetails {
 		this.date = date;
 	}
 
+	public String getActivationKey() {
+		return activationKey;
+	}
+
+	public void setActivationKey(String activationKey) {
+		this.activationKey = activationKey;
+	}
+
 	@Override
 	public String toString() {
 		return "RegistrationDetails [id=" + id + ", ip=" + ip + ", date="
-				+ date + "]";
+				+ date + ", activationKey=" + activationKey + "]";
 	}
 }

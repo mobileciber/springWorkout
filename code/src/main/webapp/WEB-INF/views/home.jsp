@@ -17,7 +17,13 @@ pageContext.setAttribute("pathPrefix", request.getContextPath() + "/");
 	</c:when>
 	<c:when test="${page eq 'register'}">
 		<jsp:include page="register.jsp" />
-	</c:when>	
+	</c:when>
+	<c:when test="${page eq 'accountCreated'}">
+		<jsp:include page="accountCreated.jsp" />
+	</c:when>
+	<c:when test="${page eq 'activateAccount'}">
+		<jsp:include page="activateAccount.jsp" />
+	</c:when>
 	<c:otherwise>
 		<jsp:include page="anonym.jsp" />
 <%-- <%@include file="/WEB-INF/views/anonym.jspf" %> --%>

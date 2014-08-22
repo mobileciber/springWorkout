@@ -1,5 +1,6 @@
 package de.ciber.comics;
 
+import java.net.URLEncoder;
 import java.util.Collection;
 import java.util.Locale;
 
@@ -91,8 +92,9 @@ public class RegistrationService {
 		newUser = repository.save(newUser);
 		
 		// send confirmation link via email
-		String confirmationLink = UserSession.SYSTEM_BASE_URL + "activateAccount.html?key=" + activationKey
+		String confirmationLink = UserSession.SYSTEM_BASE_URL + "activateAccount.html?key=" + URLEncoder.encode(activationKey)
 				+ "&id=" + newUser.getId();
+
 		String mailText = props.getMessage("email.confirmaccount.text", new Object[]{
 				registrationInfo.getFirstname(),
 				registrationInfo.getLastname(),
